@@ -1,18 +1,19 @@
-import os
+import os,sys
 import sipconfig
 from PyQt4 import pyqtconfig
+from distutils import dir_util,file_util
 
-pyonyxdir = os.path.join(pyqtconfig.Configuration().default_sip_dir,"PyOnyx")
+config = pyqtconfig.Configuration()
+pyonyx_installdir = os.path.join(config.default_sip_dir,"PyOnyx")
+pyqt_sip_flags = config.pyqt_sip_flags
 
 def generate_code(mname):
-   config = pyqtconfig.Configuration()
    argv = [config.sip_bin, "-c", "."]
    build_file = os.path.join(mname, mname + ".sbf")
    argv.extend(["-b",build_file])
    argv.extend(["-I", config.pyqt_sip_dir])
-   pyqt_sip_flags = config.pyqt_sip_flags
    argv.append(pyqt_sip_flags)
-   sip_file = "%s/%smod.sip" % (mname,mname)
+   sip_file = os.path.join(mname,mname+ "mod.sip")
    argv.append(sip_file)
 
    cmd = " ".join(argv)
@@ -20,7 +21,7 @@ def generate_code(mname):
    os.system(cmd)
 
    installs = []
-   installs.append([mname + "mod.sip", os.path.join(pyonyxdir, mname)])
+   installs.append([os.path.join(mname,mname + "mod.sip"), os.path.join(pyonyx_installdir, mname)])
 
    makefile = pyqtconfig.QtGuiModuleMakefile(
        configuration=config,
@@ -28,13 +29,20 @@ def generate_code(mname):
        installs=installs
    )
    
-   makefile.extra_libs = ["onyx_" + mname]
+   makefile.extra_libs = ["onyx_ui","onyx_sys"]
    makefile.generate()
 
-generate_code("ui")
+
+for mdir in ["Onyx","sys","ui"]: 
+   if not os.path.exists(mdir):
+      dir_util.copy_tree(os.path.join(os.path.dirname(sys.argv[0]),mdir),"./"+mdir)
+generate_code("Onyx")
 
 content = {
     "pyonyx_sip_dir":    config.default_sip_dir,
     "pyonyx_sip_flags":  pyqt_sip_flags
 }
-sipconfig.create_config_module("pyonyxconfig.py", "pyonyxconfig.py.in", content)
+confname = "pyonyxconfig.py"
+if not os.path.exists(confname + ".in"):
+   file_util.copy_file(os.path.join(os.path.dirname(sys.argv[0]),confname + ".in"),".")
+sipconfig.create_config_module(confname, confname + ".in", content)

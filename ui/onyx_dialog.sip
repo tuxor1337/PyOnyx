@@ -1,18 +1,16 @@
 
 %Import QtGui/QtGuimod.sip
 
-namespace ui
-{
+namespace ui {
 
-class OnyxDialog : QDialog
-{
+class OnyxDialog : QDialog {
 
 %TypeHeaderCode
 #include "onyx/ui/onyx_dialog.h"
 %End
 
 public:
-    OnyxDialog(QWidget *parent, bool show_shadow = true);
+    OnyxDialog(QWidget *parent /TransferThis/, bool show_shadow = true);
     ~OnyxDialog();
 };
 

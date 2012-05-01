@@ -25,14 +25,15 @@ class Configuration(pyqtconfig.Configuration):
 
         pyqtconfig.Configuration.__init__(self, cfg)
 
-class OnyxUiModuleMakefile(pyqtconfig.QtGuiModuleMakefile):
-    """The Makefile class for modules that %Import OnyxUi.
+class PyOnyxModuleMakefile(pyqtconfig.QtGuiModuleMakefile):
+    """The Makefile class for modules that %Import PyOnyx.
     """
     def finalise(self):
         """Finalise the macros.
         """
         # Make sure our C++ library is linked.
         self.extra_libs.append("onyx_ui")
+        self.extra_libs.append("onyx_sys")
 
         # Let the super-class do what it needs to.
         pyqtconfig.QtGuiModuleMakefile.finalise(self)
