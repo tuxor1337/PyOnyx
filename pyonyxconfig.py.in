@@ -34,6 +34,8 @@ class PyOnyxModuleMakefile(pyqtconfig.QtGuiModuleMakefile):
         # Make sure our C++ library is linked.
         self.extra_libs.append("onyx_ui")
         self.extra_libs.append("onyx_sys")
+        self.extra_libs.append("onyx_screen")
+        self.extra_libs.append("onyx_base")
 
         # Let the super-class do what it needs to.
         pyqtconfig.QtGuiModuleMakefile.finalise(self)

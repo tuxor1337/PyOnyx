@@ -29,11 +29,11 @@ def generate_code(mname):
        installs=installs
    )
    
-   makefile.extra_libs = ["onyx_ui","onyx_sys"]
+   makefile.extra_libs = ["onyx_ui","onyx_sys","onyx_base","onyx_screen"]
    makefile.generate()
 
 
-for mdir in ["Onyx","sys","ui"]: 
+for mdir in ["Onyx","sys","ui","screen"]: 
    if not os.path.exists(mdir):
       dir_util.copy_tree(os.path.join(os.path.dirname(sys.argv[0]),mdir),"./"+mdir)
 generate_code("Onyx")
