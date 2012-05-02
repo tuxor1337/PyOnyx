@@ -8,14 +8,14 @@ We are creating the SIP files for SIP 4.12.2. The source code is provided with t
 Please refer to http://www.mobileread.com/forums/showthread.php?t=177011 for further information and support.
 
 Requirements
-======
+------------
 
 Make sure, you have Python 2.7.3, PyQt 4.8.5 and SIP 4.12.2 somewhere in your $PATH and in your $LD_LIBRARY_PATH.
 
 Building PyOnyx has only been tested with the versions provided with this repository so far.
 
 Build and install PyOnyx
-======
+------------------------
 
 mkdir compiling
 python ../configure.py
