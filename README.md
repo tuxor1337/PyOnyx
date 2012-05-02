@@ -17,9 +17,9 @@ Building PyOnyx has only been tested with the versions provided with this reposi
 Build and install PyOnyx
 ------------------------
 
-mkdir compiling
-python ../configure.py
-make
-make install
+    mkdir compiling
+    python ../configure.py
+    make
+    make install
 
 At the moment, it's not possible to set any build parameters.
