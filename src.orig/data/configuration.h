@@ -25,6 +25,7 @@ const char * const CONFIG_ROTATE_DEGREE   = "rotate_degree";
 const char * const CONFIG_VIEW_X          = "view_x";
 const char * const CONFIG_VIEW_Y          = "view_y";
 const char * const CONFIG_PAGE_NUMBER     = "page_number";
+const char * const CONFIG_FULLSCREEN      = "full_screen";
 
 const char * const CONFIG_PAGING_MODE     = "paging_mode";
 const char * const CONFIG_DOC_LOCATION    = "document_location";

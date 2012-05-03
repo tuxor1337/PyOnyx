@@ -10,6 +10,8 @@ namespace ui
 /// Text browser for eink device.
 class OnyxTextBrowser : public QTextBrowser
 {
+    Q_OBJECT
+
 public:
     OnyxTextBrowser(QWidget *parent);
     ~OnyxTextBrowser();

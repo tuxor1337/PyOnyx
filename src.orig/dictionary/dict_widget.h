@@ -21,9 +21,11 @@ public:
 
 public:
     bool ensureVisible(const QRectF & rect, bool update_parent = false);
-    bool lookup(const QString &word);
 
     bool isInRetrieveWordsMode();
+
+public slots:
+    bool lookup(const QString &word);
 
 protected:
     virtual void keyReleaseEvent(QKeyEvent *);

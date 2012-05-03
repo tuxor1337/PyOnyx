@@ -35,6 +35,16 @@ public:
     /// Return the reference of data. Caller can update the data by this function.
     QVariant & mutable_data() { return data_; }
 
+    /// return the rectangle list of an annotation object. per rectangle per line of annotation
+    const QList<QRect> & rect_list() const { return rect_list_; }
+
+    /// return the reference of rectangle list. Caller can update the rect list by this function.
+    QList<QRect> & mutable_rect_list() { return rect_list_; }
+
+    /// return the page of an annotation object, annotation cant cross pages
+    int page() const { return page_; }
+    int & mutable_page() { return page_; }
+
     inline bool operator == (const Annotation & right) const;
     inline Annotation & operator = (const Annotation & right);
 
@@ -45,6 +55,10 @@ private:
 private:
     QString title_;
     QVariant data_;
+    /// per rectangle per line of annotation
+    QList<QRect> rect_list_;
+    /// page of annotation
+    int page_;
 };
 
 /// Compare this annotation with right. Returns true if they are identical.
@@ -53,7 +67,9 @@ bool Annotation::operator == (const Annotation & right) const
     if (this != &right)
     {
         return (title_ == right.title_ &&
-                data_ == right.data_);
+                data_ == right.data_ &&
+                rect_list_ == right.rect_list_ &&
+                page_ == right.page_);
     }
     return true;
 }
@@ -65,6 +81,8 @@ Annotation & Annotation::operator = (const Annotation & right)
     {
         title_ = right.title_;
         data_  = right.data_;
+        rect_list_ = right.rect_list_;
+        page_ = right.page_;
     }
     return *this;
 }

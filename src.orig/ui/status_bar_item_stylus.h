@@ -14,11 +14,16 @@ public:
     StatusBarItemStylus(QWidget *parent);
     virtual ~StatusBarItemStylus(void);
 
+Q_SIGNALS:
+    void clicked();
+
 public Q_SLOTS:
     void setStylusState(const int state);
 
 private:
     virtual void paintEvent(QPaintEvent *);
+    virtual void mousePressEvent(QMouseEvent *);
+    virtual void mouseReleaseEvent(QMouseEvent *);
     QImage & image();
     QString resourcePath();
 

@@ -24,9 +24,9 @@ typedef float ZoomFactor;
 enum ViewType
 {
     INVALID_VIEW = -1,
-    LIST_VIEW = 0,
-    DETAILS_VIEW,
-    THUMBNAIL_VIEW
+    LIST_VIEW = 1,
+    DETAILS_VIEW = 2,
+    THUMBNAIL_VIEW = 3,
 };
 
 
@@ -89,7 +89,9 @@ enum ReadingToolsType
     CLOCK_TOOL,
     COMIC_MODE,
     IMAGE_EMBOLDEN_TOOL,
+    READING_OPTIONS,
     UNDEFINED_TOOL,
+    MARGIN_SETTING,
 };
 
 enum NetworkType
@@ -103,6 +105,7 @@ enum NetworkType
 
 enum SpecialZoomSetting
 {
+    ZOOM_BY_TWO_POINTS = -6,
     ZOOM_TO_PAGE     = -5,
     ZOOM_TO_WIDTH    = -4,
     ZOOM_TO_HEIGHT   = -3,
@@ -126,7 +129,7 @@ enum SketchMode
 {
     MODE_SKETCHING = 10,
     MODE_ERASING,
-    MODE_MERGING,
+    MODE_MERGING, // deprecated
     MODE_UNKNOWN
 };
 
@@ -149,6 +152,14 @@ enum SketchShape
     SKETCH_SHAPE_3,
     SKETCH_SHAPE_4,
     UNKNOWN_SKETCH_SHAPE
+};
+
+enum SketchMiscItem
+{
+    SKETCH_MISC_INVALID_ITEM = 299,
+    SKETCH_MISC_PAN_MODE = 300,
+    SKETCH_MISC_TOGGLE_ANNOTATION_VISIBLE, // toggle both annot and sketch's visible
+    SKETCH_MISC_PDF_MERGE,
 };
 
 enum RotateDegree
@@ -180,6 +191,7 @@ enum AnnotationMode
     ADD_ANNOTATION = 0,
     DELETE_ANNOTATION,
     DIAPLAY_ALL_ANNOTATIONS,
+    EXPORT_ANNOTATIONS,
     UNKNOWN_ANNOTATION_MODE
 };
 

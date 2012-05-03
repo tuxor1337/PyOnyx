@@ -9,7 +9,7 @@ pyqt_sip_flags = config.pyqt_sip_flags
 src_dir = os.path.dirname(os.path.abspath(__file__))
 pyonyx_installdir = os.path.join(config.default_sip_dir,"PyOnyx")
 pyonyx_modroot = os.path.join(config.default_mod_dir, "PyOnyx")
-mlist = ["screen","ui","sys","onyx"]
+mlist = ["screen","ui","onyx"]
 
 install_sips = False
 
@@ -66,7 +66,7 @@ if __name__ == "__main__":
          makefile_out.append("\t@(cd %s; $(MAKE) %s)" % (mname,sect))
       if sect == "install":
          makefile_out.append("\t@test -d $(DESTDIR)%s || mkdir -p $(DESTDIR)%s" % (pyonyx_modroot,pyonyx_modroot))
-         makefile_out.append("\tcp -f %s $(DESTDIR)%s" % (os.path.join(src_dir,"__init__.py"),os.path.join(pyonyx_modroot,"__init__.py")))
+         makefile_out.append("\ttouch $(DESTDIR)%s" % (os.path.join(pyonyx_modroot,"__init__.py")))
          makefile_out.append("\tcp -f pyqtconfig.py $(DESTDIR)%s" % (os.path.join(pyonyx_modroot,"pyqtconfig.py")))
 
    mkfile = open("Makefile","w")

@@ -14,7 +14,7 @@ class VolumeControlDialog : public QDialog
     Q_OBJECT
 
 public:
-    VolumeControlDialog(QWidget *parent);
+    VolumeControlDialog(QWidget *parent, int time_out = 0);
     ~VolumeControlDialog();
 
 public Q_SLOTS:
@@ -48,6 +48,10 @@ private Q_SLOTS:
     void onTimeout();
     QRect rectForVolume(int index);
 
+private:
+    int getVolumeIndex(int volume_value);
+    void manipulateVolume(bool increase);
+
 public:
     QHBoxLayout        layout_;
     QImage image_;
@@ -59,6 +63,7 @@ public:
     QTimer timer_;
 
     QLabel label_;
+    int time_out_;
 };
 
 };  // namespace ui

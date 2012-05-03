@@ -41,6 +41,8 @@ public Q_SLOTS:
     void handlePopupJumpPageDialog();
     void handleClockClicked();
 
+    void onVolumeClicked();
+
 Q_SIGNALS:
     // base signals
     void createView(int type,
@@ -56,12 +58,14 @@ Q_SIGNALS:
     // signals to member widgets
     void pagebarClicked(const int, const int);
     void popupContextMenu();
+    void statusBarStylusClicked();
     void itemStatusChanged(const StatusBarItemType, const int);
 
 private Q_SLOTS:
     // handle events from member widgets
     void onPagebarClicked(const int, const int);
     void onPopupContextMenu();
+    void onStatusBarStylusClicked();
     void onMusicPlayerStateChanged(int);
 
 private:

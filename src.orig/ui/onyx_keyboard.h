@@ -41,6 +41,7 @@ public:
     inline CatalogView * menu() { return &menu_; }
 
     void initFocus();
+    void setKeyboardLanguae(QLocale language);
 
 Q_SIGNALS:
     void outOfUp(CatalogView *, int row, int col);

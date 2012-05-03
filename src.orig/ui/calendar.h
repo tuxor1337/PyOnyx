@@ -5,6 +5,7 @@
 #include "onyx/base/base.h"
 #include "onyx/sys/sys.h"
 #include "onyx/ui/ui_global.h"
+#include "onyx/screen/screen_proxy.h"
 
 namespace ui
 {
@@ -28,6 +29,7 @@ private:
     bool event(QEvent *e);
     void createLayout();
     void paintEvent(QPaintEvent *);
+    void showEvent(QShowEvent *);
     void drawMonthName(QPainter* painter, const QRect &month_name_rect,
             const int month);
     void drawMonth(QPainter* painter,
@@ -60,7 +62,7 @@ private:
 
     QRect left_arrow_rect_;
     QRect right_arrow_rect_;
-
+    onyx::screen::ScreenProxy::Waveform flush_type_;
 };
 
 }   // namespace ui

@@ -11,6 +11,7 @@ typedef QVector<AnnotationMode> AnnotationModes;
 typedef QVector<SketchMode>     SketchModes;
 typedef QVector<SketchColor>    SketchColors;
 typedef QVector<SketchShape>    SketchShapes;
+typedef QVector<SketchMiscItem>     SketchMiscItems;
 
 enum SketchActionsType
 {
@@ -18,7 +19,8 @@ enum SketchActionsType
     ANNOTATION_MODE = 0,
     SKETCH_MODE,
     SKETCH_SHAPE,
-    SKETCH_COLOR
+    SKETCH_COLOR,
+    SKETCH_MISC_ITEM,
 };
 
 struct SketchActionsContext
@@ -28,6 +30,7 @@ struct SketchActionsContext
     int               cur_sketch_mode;
     int               cur_color;
     int               cur_shape;
+    int               cur_misc_item;
     bool              active_checked_status;
 
     SketchActionsContext()
@@ -55,25 +58,38 @@ public:
                               const SketchColor selected_color = SKETCH_COLOR_BLACK);
     void generateSketchShapes(const SketchShapes & shapes,
                               const SketchShape selected_shape = SKETCH_SHAPE_2);
+    void generateSketchMiscItems(const SketchMiscItems &items);
 
     void setAnnotationMode(const AnnotationMode mode, bool checked);
     void setSketchMode(const SketchMode mode, bool checked);
     void setSketchShape(const SketchShape shape);
     void setSketchColor(const SketchColor color);
+    // set different menu text according to annotation visible value
+    void setToggleAnnotationVisibleText(bool value);
+    void setPdfMergeEnabled(bool enabled);
 
     /// Retrieve the selected sketch mode.
     SketchActionsType getSelectedValue(int & value, bool & checked);
 
+public:
+    QActionGroup * annotationModes();
+    QActionGroup * sketchModes();
+    QActionGroup * colors();
+    QActionGroup * shapes();
+    QActionGroup * miscItems();
+
 private Q_SLOTS:
     void onSketchTriggered(bool checked);
     void onEraseTriggered(bool checked);
-    void onMergeTriggered(bool checked);
     void onAddAnnotationTriggered(bool checked);
     void onDeleteAnnotationTriggered(bool checked);
     void onDisplayAnnotationsTriggered(bool checked);
+    void onExportAnnotationsTriggered(bool checked);
 
     void onColorTriggered(QAction *action);
     void onShapeTriggered(QAction *action);
+
+    void onMiscItemTriggered(QAction *action);
 
 private:
     SketchActionsContext ctx_;
@@ -82,6 +98,7 @@ private:
     scoped_ptr<QActionGroup> sketch_modes_;
     scoped_ptr<QActionGroup> colors_;
     scoped_ptr<QActionGroup> shapes_;
+    scoped_ptr<QActionGroup> misc_items_;
 };  // SketchActions
 
 }  // namespace ui

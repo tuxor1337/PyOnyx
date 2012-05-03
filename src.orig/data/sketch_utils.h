@@ -82,6 +82,7 @@ struct SketchPosition
 };
 
 int getPenColor(const SketchColor c);
+int getPenSize(const SketchShape s);
 int getPointSize(const SketchShape s, const ZoomFactor z);
 void transformCoordinate(const QRect & page_area,
                          const QPoint & stroke_point,

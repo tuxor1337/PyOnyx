@@ -22,7 +22,7 @@ public:
     bool close(const QString & doc_path);
     void close();
     bool save(const QString & doc_path);
-    void save();
+    bool save();
 
     bool exportDatabase(const QString & doc_path);
     bool loadFromDatabase(const QString & db_name);
@@ -65,6 +65,10 @@ public:
 
     // paint
     void paintPage(const QString & doc_path, const PageKey & page_key, QPainter & painter);
+
+    // help coordinate transform function,
+    // because SketchProxy has all knowledge to do transforming work, so we implement it here
+    bool transformToDocumentCoordinate(const QPoint &from, QPoint &to);
 
 Q_SIGNALS:
     void requestUpdateScreen();

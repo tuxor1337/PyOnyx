@@ -34,6 +34,8 @@ public:
     void setSystemAction(BaseActions * actions);
     int  popup(const QString &menu_title = "");
     QAction * selectedCategory();
+    // must be called after all categories have been added
+    void setSelectedCategory(QAction *category);
     void clear();
 
 protected:

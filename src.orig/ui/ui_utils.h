@@ -36,6 +36,10 @@ QSize bestDialogSize();
 
 QString sizeString(int size);
 
+bool is97inch();
+
+bool isLandscapeVolumeMapping();
+
 };
 
 #endif  // ONYX_UI_UTILS_H_

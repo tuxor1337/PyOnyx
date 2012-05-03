@@ -41,6 +41,7 @@ public:
 
 public:
     void addAction(QAction *action);
+    void clear();
 
 protected:
     bool event(QEvent *e);

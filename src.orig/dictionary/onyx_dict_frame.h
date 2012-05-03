@@ -19,8 +19,10 @@ public:
     OnyxDictFrame(QWidget *parent, DictionaryManager & dict, tts::TTS *tts = 0);
     ~OnyxDictFrame();
 
-    bool lookup(const QString &word);
     void setDefaultFocus();
+
+public slots:
+    bool lookup(const QString &word);
 
 Q_SIGNALS:
     void rotateScreen();

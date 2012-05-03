@@ -182,6 +182,31 @@ protected:
     void drawDigitalClock(QPainter &painter);
 };
 
+class ButtonView : public ContentView
+{
+        Q_OBJECT
+
+    public:
+        ButtonView(QWidget *parent);
+        virtual ~ButtonView();
+
+        static const QString type();
+
+    public:
+        virtual void updateView();
+
+    protected:
+        void paintEvent(QPaintEvent * event);
+
+        void keyPressEvent(QKeyEvent *e);
+        void keyReleaseEvent(QKeyEvent *e);
+
+    private:
+        QLabel label_title_;
+
+        void drawTitle(QPainter & painter, QRect rect);
+};
+
 };
 
 #endif

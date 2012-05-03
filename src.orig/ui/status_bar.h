@@ -61,6 +61,7 @@ public Q_SLOTS:
 Q_SIGNALS:
     void progressClicked(const int percent, const int value);
     void menuClicked();
+    void stylusClicked();
     void requestInputUrl();
     void requestInputText();
 
@@ -68,7 +69,9 @@ private Q_SLOTS:
     void onProgressChanging(const int current, const int total);
     void onProgressChanged(const int percent, const int value);
     void onMenuClicked();
+    void onStylusClicked();
     bool onItemStatusChanged(const StatusBarItemType type, const int state);
+    void onViewportChanged(const QRect & parent, const QRect & child);
 
     // handle the events from system status manager
     void onBatterySignal(int value, int status);

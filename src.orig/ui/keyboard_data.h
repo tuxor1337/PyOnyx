@@ -17,7 +17,7 @@ public:
     KeyboardData();
     virtual ~KeyboardData();
 
-    ODatas & topCodes(bool shift = false);
+    ODatas & topCodes(bool shift = false, bool symbol = false);
     ODatas & leftCodes(bool shift = false);
     ODatas & middleCodes(bool shift = false);
     ODatas & rightCodes(bool shift = false);
@@ -48,10 +48,12 @@ protected:
     virtual void initLeftKeySymbolCode() = 0;
     virtual void initMiddleKeySymbolCode() = 0;
     virtual void initRightKeySymbolCode() = 0;
+    virtual void initTopKeySymbolCode();
 
     OData * createData(const QString & value);
     OData * createBackspaceData();
     OData * createEnterData();
+    OData * createSpaceData();
 
 protected:
     // Use these data for initialization.
@@ -73,6 +75,7 @@ protected:
     ODatas left_symbol_codes_;
     ODatas middle_symbol_codes_;
     ODatas right_symbol_codes_;
+    ODatas top_symbol_codes_;
 };
 
 }   // namespace ui
