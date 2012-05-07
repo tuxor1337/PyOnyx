@@ -68,7 +68,7 @@ if __name__ == "__main__":
          makefile_out.append("\t@test -d $(DESTDIR)%s || mkdir -p $(DESTDIR)%s" % (pyonyx_modroot,pyonyx_modroot))
          makefile_out.append("\ttouch $(DESTDIR)%s" % (os.path.join(pyonyx_modroot,"__init__.py")))
          makefile_out.append("\tcp -f pyonyxconfig.py $(DESTDIR)%s" % (os.path.join(pyonyx_modroot,"pyonyxconfig.py")))
-z
+
    mkfile = open("Makefile","w")
    mkfile.writelines([s + "\n" for s in makefile_out])
    
