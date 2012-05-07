@@ -24,3 +24,5 @@ Build and install PyOnyx
     make install
 
 At the moment, it's not possible to set any build parameters.
+
+It's advisable to set up a Scratchbox2 environment following this tutorial: http://wiki.mobileread.com/wiki/Boox_M92_Development_with_Scratchbox2
