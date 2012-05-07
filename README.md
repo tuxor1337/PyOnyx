@@ -18,6 +18,7 @@ Build and install PyOnyx
 ------------------------
 
     mkdir compiling
+    cd compiling
     python ../configure.py
     make
     make install
